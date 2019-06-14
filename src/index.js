@@ -1,12 +1,37 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import {render} from 'react-dom';
+import './common/Css/index.less';
+import App from './router';
+import { HashRouter } from 'react-router-dom'
+import { Provider } from 'react-redux'
+import { createStore, applyMiddleware } from 'redux'
+import thunk from 'redux-thunk'
+import { createLogger } from 'redux-logger'
+import reducer from './reducers/state'
 
-ReactDOM.render(<App />, document.getElementById('root'));
+const middleware = [ thunk ];
+if (process.env.NODE_ENV !== 'production' && false) {
+  middleware.push(createLogger())
+}
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+const store = createStore(
+  reducer,
+  applyMiddleware(...middleware)
+);
+
+//注册store监听器
+// const unsubscribe = store.subscribe(() =>
+//   console.log(store.getState())
+// );
+
+//unsubscribe();停止监听
+
+render(
+  <Provider store={store}>
+    <HashRouter basename="/">
+      <App />
+    </HashRouter>
+  </Provider>,
+
+  document.getElementById('root'));
+

@@ -1,0 +1,118 @@
+#home-category{
+	background-color: #fff;
+  position: relative;
+	margin-bottom:20px;
+.swiper-wrapper{
+	img{
+		width:100%;
+		height:900px;
+	}
+	.swiper-slide{
+		.check-btn{
+			z-index:10;
+			position: absolute;
+			top:50%;
+			left:50%;
+			height: 30px;
+			width:100px;
+			color:#fff;
+			animation: leftMove 0.8s linear 1;
+			span{
+				position: absolute;
+				left:0;
+				top:0;
+				line-height: 30px;
+				width: 100%;
+				text-align: center;
+				color:#fff;
+				z-index:12;
+			}
+			b{
+				position: absolute;
+				top:0;
+				left:0;
+				width: 100%;
+				height: 100%;
+				background: #000000;
+				opacity: .5;
+				border-radius: 15px;
+			}
+		}
+	}
+}
+	.carousel-item{
+		ur{
+			width: 100%;
+			height: auto;
+		}
+		li{
+			display: block;
+			list-style: none;
+			width: 100%;
+			background-repeat: no-repeat;
+			background-size: 50px auto;
+			background-position: top center;
+			text-align: center;
+			color:#666;
+			font-size: 14px;
+      height:500px;
+      img{
+        width:100%;
+        height:100%;
+      }
+		}
+	}
+	.index-container{
+    position: absolute;
+    left:50%;
+    transform: translateX(-50%);
+    bottom:20px;
+		ul{
+			width: 100%;
+			height: auto;
+			text-align: center;
+		}
+		li{
+			list-style: none;
+			display: inline-block;
+			height: 8px;
+			width: 8px;
+			border-radius: 4px;
+			background-color: #ccc;
+			margin: 0 3px;
+		}
+		li.selected{
+			background-color: rgb(233, 32, 61);
+		}
+	}
+	.prev-btn{
+		width:0;
+		height:0;
+		border-width:25px 20px 25px 0;
+		border-style:solid;
+		border-color:transparent #333 transparent transparent;/*透明 灰 透明 透明 */
+		position:absolute;
+		left:20px;
+		top:50%;
+		transform: translateY(-50%);
+		opacity: .3;
+	}
+	.next-btn{
+		width:0;
+		height:0;
+		border-width:25px 0 25px 20px;
+		border-style:solid;
+		border-color:transparent transparent transparent #333;/*透明 透明 透明 灰*/
+		position:absolute;
+		right:20px;
+		top:50%;
+		transform: translateY(-50%);
+		opacity: .3;
+	}
+}
+
+@keyframes leftMove{
+	0% { opacity: 0;}
+	50% { opacity: .5;}
+	100% { margin-top: 1;}
+}

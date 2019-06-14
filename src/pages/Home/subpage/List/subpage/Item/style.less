@@ -1,0 +1,41 @@
+.list-box{
+  width:400px;
+  .list-title{
+    font-size:18px;
+    display: flex;
+    justify-content: left;
+    height:48px;
+    line-height:48px;
+    border-bottom:1px dotted #ccc;
+    .subtitle{
+      line-height:44px;
+      margin-left:15px;
+      font-size:14px;
+      color:#ccc;
+    }
+  }
+  .list-item{
+    margin-top:10px;
+    li{
+      height:40px;
+      line-height:40px;
+      font-size:14px;
+      color:#696969;
+      border-bottom:1px dotted #ccc;
+      display: flex;
+      justify-content: space-between;
+      .item-content{
+        width:300px;
+        overflow:hidden;
+        text-overflow:ellipsis;
+        white-space:nowrap;
+      }
+      .item-date{
+        margin-right:5px;
+      }
+    }
+    li:hover{
+      color:#ad9674;
+    }
+  }
+}
