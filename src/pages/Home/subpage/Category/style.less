@@ -16,7 +16,7 @@
 			height: 30px;
 			width:100px;
 			color:#fff;
-			animation: leftMove 0.8s linear 1;
+			//animation: animation 1000ms linear infinite;
 			span{
 				position: absolute;
 				left:0;
@@ -37,6 +37,15 @@
 				opacity: .5;
 				border-radius: 15px;
 			}
+		}
+		.check-btn2{
+			z-index:10;
+			position: absolute;
+			top:20%;
+			left:0%;
+			height: 30px;
+			color:#000;
+			//animation: animation2 1000ms linear 1;
 		}
 	}
 }
@@ -110,9 +119,48 @@
 		opacity: .3;
 	}
 }
+//animation: name duration timing-function delay iteration-count direction//alternate是否开启轮转方向播放;
+@keyframes animation{
+	0% {
+		opacity: 0;
+		transform: scale(0.1);
+	}
+	50% {
+		opacity: .5;
+		transform: scale(0.5);
+	}
+	100% {
+		opacity: 1;
+		transform: scale(1);
+	}
+}
+@keyframes animation2 {
+	from {
+		-webkit-transform: rotate(0deg)
+	}
 
-@keyframes leftMove{
-	0% { opacity: 0;}
-	50% { opacity: .5;}
-	100% { margin-top: 1;}
+	to {
+		-webkit-transform: rotate(360deg)
+	}
+	//0% {
+	//	opacity: 0;
+	//	transform: scale(0.1);
+	//}
+	//25% {
+	//	opacity: .2;
+	//	transform: scale(0.3);
+	//}
+  //
+	//50% {
+	//	opacity: .5;
+	//	transform: scale(0.5);
+	//}
+	//75% {
+	//	opacity: .7;
+	//	transform: scale(0.7);
+	//}
+	//100% {
+	//	opacity: 1;
+	//	transform: scale(1);
+	//}
 }

@@ -8,7 +8,7 @@ import anime from 'animejs';
 
 class Product extends Component{
   constructor (prop){
-    super(prop)
+    super(prop);
     this.myref=React.createRef();
     this.myref2=React.createRef();
   }
@@ -35,6 +35,7 @@ class Product extends Component{
       duration: 2000,
       loop: true
     });
+
   }
 
 

@@ -8,44 +8,82 @@ import img4 from './images/banner_10.png'
 import Swiper from 'swiper/dist/js/swiper.js'
 import 'swiper/dist/css/swiper.min.css'
 import './style.less'
+import anime from "animejs";
+import $ from 'jquery';
 
 class Category extends Component{
 	constructor(props) {
 	  super(props);
 	  this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
-    this.myRef = React.createRef();
 	  this.state = {
-	  	index:0
+	  	index:0,
+      realIndex:0
 	  }
 	}
   componentDidMount() {
-    new Swiper(this.myRef.current, {
+    let el = $(document.getElementsByClassName('check-btn2')).children('li').toArray();
+    var animation = anime({
+      targets: el,
+      translateX: 250,
+      duration:2000,
+      // scale:function(el){ console.log(el);},
+      delay: anime.stagger(200) // 每个元素的延迟增加100毫秒。
+    });
+
+    let animation2 = anime({
+      targets: this.textInput,
+      rotate: {
+        value: 360,
+        duration: 800,
+        easing: 'easeInOutSine'
+      },
+      scale: {
+        value: 2,
+        duration: 800,
+        delay: 0,
+        easing: 'easeInOutQuart'
+      }
+    });
+
+
+
+   new Swiper(this.myRef, {
       centeredSlides: true,
       loop:true,
+      speed:'500ms',
 			autoplay:{
       	delay:2000,
         waitForTransition:false
 			},
       controller:true,
-      coverflowEffect: {
-        rotate: 30,
-        stretch: 10,
-        depth: 60,
-        modifier: 2,
-        slideShadows : true
-      },
+			on:{
+        slideChangeTransitionEnd:() => {
+          animation.restart();  // 重置动画
+          animation2.restart();
+        },
+        slideChangeTransitionStart:() => {
+          animation.reset();
+          animation2.reset();
+
+        }
+			}
     });
   }
 	render(){
-
-
 		return (
 				<div id="home-category">
-          <div className="swiper-container" ref={this.myRef}>
+          <div className="swiper-container" ref={self => this.myRef = self}>
 						<div className="swiper-wrapper">
 							<div className="swiper-slide">
 								<img src={img1} alt=''/>
-								<div className="check-btn"><span>查看详情</span><b></b></div>
+								<div className="check-btn" ref={input => this.textInput = input}><span>查看详情</span><b></b></div>
+                <ul className="check-btn2">
+                  <li>描述性段落,描述性段落</li>
+                  <li>描述性段落,描述性段落</li>
+                  <li>描述性段落,描述性段落</li>
+									<li>描述性段落,描述性段落</li>
+                  <li>描述性段落,描述性段落</li>
+								</ul>
 							</div>
               <div className="swiper-slide"><img src={img2} alt=''/></div>
               <div className="swiper-slide"><img src={img3} alt=''/></div>
@@ -64,6 +102,15 @@ class Category extends Component{
           <div className='next-btn'></div>
 				</div>
 			)
+	}
+
+	SwipeAnimation(){
+
+	}
+
+	resetSwipeAnimation(){
+    // 重置样式
+
 	}
 
 	SwipeCategory(e){
