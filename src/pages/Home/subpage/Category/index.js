@@ -8,8 +8,7 @@ import img4 from './images/banner_10.png'
 import Swiper from 'swiper/dist/js/swiper.js'
 import 'swiper/dist/css/swiper.min.css'
 import './style.less'
-import anime from "animejs";
-import $ from 'jquery';
+import 'animate.css';
 
 class Category extends Component{
 	constructor(props) {
@@ -21,73 +20,62 @@ class Category extends Component{
 	  }
 	}
   componentDidMount() {
-    let el = $(document.getElementsByClassName('check-btn2')).children('li').toArray();
-    var animation = anime({
-      targets: el,
-      translateX: 250,
-      duration:2000,
-      // scale:function(el){ console.log(el);},
-      delay: anime.stagger(200) // 每个元素的延迟增加100毫秒。
-    });
-
-    let animation2 = anime({
-      targets: this.textInput,
-      rotate: {
-        value: 360,
-        duration: 800,
-        easing: 'easeInOutSine'
-      },
-      scale: {
-        value: 2,
-        duration: 800,
-        delay: 0,
-        easing: 'easeInOutQuart'
-      }
-    });
-
-
-
+		const _this = this;
    new Swiper(this.myRef, {
-      centeredSlides: true,
-      loop:true,
-      speed:'500ms',
-			autoplay:{
-      	delay:2000,
-        waitForTransition:false
+     watchOverflow: true,//因为仅有1个slide，swiper无效
+		 loop:true,
+		 speed:'2000ms',
+		 autoplay:false,
+		 autoplay:{
+      	delay:5000,
+        waitForTransition:false,
+        disableOnInteraction:false
 			},
-      controller:true,
-			on:{
-        slideChangeTransitionEnd:() => {
-          animation.restart();  // 重置动画
-          animation2.restart();
-        },
-        slideChangeTransitionStart:() => {
-          animation.reset();
-          animation2.reset();
-
+		 on:{
+       slideChangeTransitionStart:function(){
+			 },
+       slideChangeTransitionEnd:function(){
+         _this.setState({
+           realIndex:this.slides.eq([this.activeIndex]).attr('data-index')
+         });
         }
 			}
     });
+
   }
 	render(){
 		return (
 				<div id="home-category">
           <div className="swiper-container" ref={self => this.myRef = self}>
 						<div className="swiper-wrapper">
-							<div className="swiper-slide">
+							<div className="swiper-slide" data-index="0">
 								<img src={img1} alt=''/>
-								<div className="check-btn" ref={input => this.textInput = input}><span>查看详情</span><b></b></div>
+								<div className='animated zoomIn check-btn'><span>查看详情</span><b></b></div>
                 <ul className="check-btn2">
-                  <li>描述性段落,描述性段落</li>
-                  <li>描述性段落,描述性段落</li>
-                  <li>描述性段落,描述性段落</li>
-									<li>描述性段落,描述性段落</li>
-                  <li>描述性段落,描述性段落</li>
+                  <li className={`animated ${this.state.realIndex == 0 ? 'fadeInLeft':''}`}>描述性段落,描述性段落</li>
+
 								</ul>
 							</div>
-              <div className="swiper-slide"><img src={img2} alt=''/></div>
-              <div className="swiper-slide"><img src={img3} alt=''/></div>
-							<div className="swiper-slide"><img src={img4} alt=''/></div>
+              <div className="swiper-slide" data-index="1">
+								<img src={img2} alt=''/>
+                <ul className="check-btn2">
+                  <li className={`animated ${this.state.realIndex == 1 ? 'zoomIn':''}`}>描述性段落,描述性段落</li>
+                </ul>
+							</div>
+              <div className="swiper-slide" data-index="2">
+								<img src={img3} alt=''/>
+                <ul className="check-btn2">
+                  <li className={`animated ${this.state.realIndex == 2 ? 'fadeInDown':''}`}>描述性段落,描述性段落</li>
+                </ul>
+							</div>
+							<div className="swiper-slide" data-index="3">
+								<img src={img4} alt=''/>
+                <ul className="check-btn2">
+                   <li className={`animated ${this.state.realIndex == 3 ? 'rotateIn':''}`}>描述性段落,描述性段落</li>
+                  <li className={`animated ${this.state.realIndex == 3 ? 'swing':''}`}>描述性段落,描述性段落</li>
+								</ul>
+
+							</div>
 						</div>
 					</div>
 
