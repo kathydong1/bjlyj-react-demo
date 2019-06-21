@@ -26,19 +26,19 @@ class HomeList extends Component{
       // 回调函数
       //当动画开始之前会被触发
       beforeReveal: function(domEl){
-        console.log('动画执行了');
+        // console.log('动画执行了');
       },
       //鼠标滚轮滚动之前会被触发
       beforeReset: function(domEl){
-        console.log('滚轮开始---');
+        // console.log('滚轮开始---');
       },
       //动画开始之后会被触发
       afterReveal: function(domEl){
-        console.log('动画结束了');
+        // console.log('动画结束了');
       },
       //滚轮滚动之后会被触发
       afterReset: function(domEl){
-        console.log('滚轮结束了');
+        // console.log('滚轮结束了');
       }
     });
 	}

@@ -7,7 +7,7 @@ class AboutUs extends Component{
 
   componentDidMount(){
     const { dispatch } = this.props;
-    dispatch({type:'SET_INDEX',index:4});
+    dispatch({type:'SET_INDEX',index:5});
   }
 
 

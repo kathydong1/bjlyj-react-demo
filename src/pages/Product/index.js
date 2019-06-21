@@ -27,7 +27,7 @@ class Product extends Component{
     //   duration: 700,
     //   delay: (el, i) => { return i * 500 }
     // });
-    var myAnimation = anime({
+    anime({
       targets: [this.myref.current, this.myref2.current],
       translateX: '13rem',
       rotate: 180,
