@@ -14,7 +14,15 @@ class HomeHeader extends Component{
 	  this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
 	  this.state = {
       index:this.props.data,
-      clickIndex:this.props.data
+      clickIndex:this.props.data,
+      item:[
+        {name:'首页',router:'/'},
+        {name:'公司介绍',router:'/introduce'},
+        {name:'产品展示',router:'/product'},
+        {name:'客户案例',router:'/server-case'},
+        {name:'在线留言',router:'/message-for-us'},
+        {name:'联系我们',router:'/about-us'},
+      ]
 	  }
 	}
 
@@ -39,6 +47,19 @@ class HomeHeader extends Component{
 
 	render(){
 	  const {index,clickIndex} = this.state;
+
+	  const item = this.state.item.map((el,i) => {
+	    return(
+	      <div
+            data-index={i}
+            key={i}
+            className={`${index === i?'item-box':''} ${clickIndex === i?'click-box':''}`}
+            onMouseEnter={this.toggleHover.bind(this)}
+            onClick={this.changePageHandel.bind(this,el.router)}
+          >{el.name}<b className='active-line'></b>
+      </div>
+      )
+    });
 		return (
 				<div id='home-header' className="clear-fix">
           <div className='home-header-content'>
@@ -47,46 +68,7 @@ class HomeHeader extends Component{
             </div>
             <div className='header-nav'>
               <div className='header-item'>
-
-                <div
-                  data-index={0}
-                  className={`${index === 0?'item-box':''} ${clickIndex === 0?'click-box':''}`}
-                  onMouseEnter={this.toggleHover.bind(this)}
-                  onClick={this.changePageHandel.bind(this,'/')}
-                  >首页<b className='active-line'></b>
-                </div>
-
-                <div
-                  data-index={1}
-                  className={`${index === 1?'item-box':''} ${clickIndex === 1?'click-box':''}`}
-                  onMouseEnter={this.toggleHover.bind(this)}
-                  onClick={this.changePageHandel.bind(this,'/introduce')}
-                  >公司介绍<b className='active-line'></b>
-                </div>
-
-                <div
-                  data-index={2}
-                  className={`${index === 2?'item-box':''} ${clickIndex === 2?'click-box':''}`}
-                  onMouseEnter={this.toggleHover.bind(this)}
-                  onClick={this.changePageHandel.bind(this,"/product")}
-                  >产品展示<b className='active-line'></b>
-                </div>
-
-                <div
-                  data-index={3}
-                  className={`${index === 3?'item-box':''} ${clickIndex === 3?'click-box':''}`}
-                  onMouseEnter={this.toggleHover.bind(this)}
-                  onClick={this.changePageHandel.bind(this, "/server-case")}
-                  >客户案例<b className='active-line'></b>
-                </div>
-
-                <div
-                  data-index={4}
-                  className={`${index === 4?'item-box':''} ${clickIndex === 4?'click-box':''}`}
-                  onMouseEnter={this.toggleHover.bind(this)}
-                  onClick={this.changePageHandel.bind(this,"/about-us")}
-                  >联系我们<b className='active-line'></b>
-                </div>
+                {item}
               </div>
               <SearchInput
                 value=""
@@ -95,8 +77,6 @@ class HomeHeader extends Component{
             </div>
           </div>
           <div className='home-header-bg'></div>
-
-
 				</div>
 			)
 	}

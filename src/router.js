@@ -7,6 +7,7 @@ import ServerCase from "./pages/ServerCase";
 import AboutUs from "./pages/AboutUs";
 import HomeHeader from './compontent/HomeHeader/index'
 import Footer from './compontent/Footer/index';
+import MessageForUs from './pages/MessageForUs'
 
 
 
@@ -21,7 +22,9 @@ class Routers extends Component{
                 <Route exact path="/introduce" render={props=>(<Introduce props={props} />)}/>
                 <Route exact path="/product" render={props=>(<Product props={props} />)}/>
                 <Route exact path="/server-case" render={props=>(<ServerCase props={props} />)}/>
+                <Route exact path="/message-for-us" render={props=>(<MessageForUs props={props} />)}/>
                 <Route exact path="/about-us" render={props=>(<AboutUs props={props} />)}/>
+
                 {/*<Route render={props=>(<NotFound props={props} />)}/>*/}
               </Switch>
               <Footer/>
