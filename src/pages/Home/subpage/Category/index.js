@@ -13,7 +13,7 @@ import './style.less'
 import '../../../../common/Css/animate.less'
 import { connect } from "react-redux";
 import $ from 'jquery';
-
+// test
 
 class Category extends Component{
 	constructor(props) {
