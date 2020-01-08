@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<!-- saved from url=(0108)http://localhost:63342/work/ES6/%E6%95%B0%E7%BB%84%E6%96%B0%E5%A2%9EES6.html?_ijt=go6llj8ph5gqamnj3midn154f0 -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>数组新增</title>
+</head>
+<body>
+<script>
+  /**
+   * ...变量名, 称为rest参数，用于函数传递参数时，将其余参数组成数组，
+   * 用于替代参数的arguments,arguments获取的是参数的类数组，而rest是真正的数组。
+   *
+   * 扩展运算符...  是rest参数的逆运算，用于将数组，拆分成逗号隔开形式
+   *
+   *
+   *
+   *
+   */
+
+    // rest函数参数
+    function fn(x,...y){
+      console.log(x);
+      console.log(y);
+    }
+    fn(1,2,3,455,67,7,6);
+
+    // 扩展运算符
+    const arr = [99,88,77];
+    let [...a] =arr;
+    a[0] = 666;
+    console.log(a);
+    console.log(arr);
+</script>
+
+
+
+<div id="cli_dialog_div"></div></body></html>
